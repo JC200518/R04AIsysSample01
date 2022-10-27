@@ -45,15 +45,6 @@ public class Json05 {
 		}
 		return message;
 	}
-	
-	public static String getIso6391Name(String s) throws IOException, URISyntaxException, InterruptedException {
-		Language message = getLanguage(s);
-		if (message != null) {
-			return message.documents[0].detectedLanguage.iso6391Name;
-		}
-		return "en";
-		
-	}
 
 }
 
@@ -68,9 +59,8 @@ class Documents {
 }
 
 class DetectedLanguage {
-	String iso6391Name;
 	String name;
-}	
+}
 
 class Source {
 	Docs[] documents;
