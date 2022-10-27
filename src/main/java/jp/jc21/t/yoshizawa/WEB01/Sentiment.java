@@ -1,4 +1,4 @@
-package jp.jc21.t.yoshizawa.WEB01.Sentiment;
+package jp.jc21.t.yoshizawa.WEB01;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -8,8 +8,6 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-
-import jp.jc21.t.yoshizawa.WEB01.WebApiConnector;
 
 public class Sentiment {
 
@@ -29,13 +27,16 @@ public class Sentiment {
 		Map<String, String> map = new HashMap<>();
 		map.put("Ocp-Apim-Subscription-Key", "34ab81a55e3840279a519cf53ca4f492");
 
-		Docs doc = new Docs();
+		Docs1 doc = new Docs1();
 		doc.id = "1";	
 		doc.text = s;
+		doc.language = "ja";
+		doc.language= Json05.getIso6391Name(s);
 
-		Source src = new Source();
-		src.documents = new Docs[1];
+		Source1 src = new Source1();
+		src.documents = new Docs1[1];
 		src.documents[0] = doc;
+		
 
 		String jsonData = new Gson().toJson(src);
 
@@ -53,12 +54,12 @@ public class Sentiment {
 }
 
 class Sentiments {
-	Documents[] documents;
+	Documents1[] documents;
 	String[] errors;
 	String modelVersion;
 }
 
-class Documents {
+class Documents1 {
 	ConfidenceScore confidenceScores;
 	String id;
 	Sentences[] sentences;
@@ -105,11 +106,12 @@ class Assesment{
 	String text;
 }
 
-class Source {
-	Docs[] documents;
+class Source1 {
+	Docs1[] documents;
 }
 
-class Docs {
+class Docs1 {
+	String language;
 	String id;
 	String text;
 }
