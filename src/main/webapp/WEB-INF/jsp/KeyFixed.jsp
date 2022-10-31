@@ -1,20 +1,15 @@
-<%@page import="java.util.Optional"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CognitiveServiceを使うサイト(KeyPhrases)</title>
 </head>
 <%
-	Optional<String> message = 
-		Optional.ofNullable((String) request.getAttribute("message"));
-Optional<String> string = 
-	Optional.ofNullable((String) request.getAttribute("string"));
-
+	Object o  = request.getAttribute("aa");
+	String[] message1 = (String[])o;
 %>
-
 <body>
 <a href="./hello">hello</a>
 <a href="./result">Result</a>
@@ -24,8 +19,17 @@ Optional<String> string =
 <a href="./Bold">KeyBold</a>
 <a href="./Sen1">Sentiments</a>
 
-<H1>DetectLanguage</H1>
-<H3>文章：<%= string.orElse("ERROR") %></H3>
-<H3>結果：<%= message.orElse("ERROR") %></H3>
+<h1>CognitiveServiceを使うサイト(KeyPhrases)</h1>
+<h1>元の文章</h1>
+<p><%=request.getAttribute("String") %></p>
+
+<h1>Key Phrases一覧</h1>
+<p><% String[] ss = message1;
+		for(String s: ss){
+	%>
+	<%= s %>
+	<% } %>
+</p>
+
 </body>
 </html>

@@ -1,19 +1,14 @@
-<%@page import="java.util.Optional"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>テキストの感情を分析するサイト</title>
 </head>
-<%
-	Optional<String> message = 
-		Optional.ofNullable((String) request.getAttribute("message"));
-Optional<String> string = 
-	Optional.ofNullable((String) request.getAttribute("string"));
-
-%>
+<%  Object o = request.getAttribute("aa"); 
+    String message1 = (String)o;
+ %>
 
 <body>
 <a href="./hello">hello</a>
@@ -24,8 +19,10 @@ Optional<String> string =
 <a href="./Bold">KeyBold</a>
 <a href="./Sen1">Sentiments</a>
 
-<H1>DetectLanguage</H1>
-<H3>文章：<%= string.orElse("ERROR") %></H3>
-<H3>結果：<%= message.orElse("ERROR") %></H3>
+<h1>分析結果</h1>
+
+<H3>文字列：<%=request.getAttribute("aa") %></H3>
+<H3>結果：<%= request.getAttribute("bb") %></H3>
+
 </body>
 </html>

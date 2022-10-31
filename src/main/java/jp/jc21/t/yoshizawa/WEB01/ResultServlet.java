@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 /**
  * Servlet implementation class ResultServlet
  */
@@ -35,7 +35,7 @@ public class ResultServlet extends HttpServlet {
 			Language result = Json05.getLanguage(string);
 			String message = result.documents[0].detectedLanguage.name;
 			request.setAttribute("message", message);
-			request.getRequestDispatcher("/WEB-INF/result.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

@@ -23,7 +23,7 @@ public class Json05 {
 
 		String url = "https://r04jk3a39-text.cognitiveservices.azure.com//" + "text/analytics/v3.0/languages";
 		Map<String, String> map = new HashMap<>();
-		map.put("Ocp-Apim-Subscription-Key", "34ab81a55e3840279a519cf53ca4f492");
+		map.put("Ocp-Apim-Subscription-Key", "85b63c46687a483b9bf8731b835abf4b");
 
 		Docs doc = new Docs();
 		doc.id = "1";
@@ -45,8 +45,16 @@ public class Json05 {
 		}
 		return message;
 	}
-
+	
+	public static String getIso6391Name(String s) throws IOException, URISyntaxException, InterruptedException {
+		Language message = getLanguage(s);
+		if (message != null) {
+			return message.documents[0].detectedLanguage.iso6391Name;
+		}
+		return "en";
+	}
 }
+
 
 class Language {
 	Documents[] documents;
@@ -59,6 +67,7 @@ class Documents {
 }
 
 class DetectedLanguage {
+	String iso6391Name;
 	String name;
 }
 

@@ -1,4 +1,3 @@
-<%@page import="java.util.Optional"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <%
-	Optional<String> message = 
-		Optional.ofNullable((String) request.getAttribute("message"));
-Optional<String> string = 
-	Optional.ofNullable((String) request.getAttribute("string"));
-
+	Object o  = request.getAttribute("bb");
+	String[] message1 = (String[])o;
+	Object p = request.getAttribute("aa");
+	String message2 = (String)p;
 %>
-
 <body>
 <a href="./hello">hello</a>
 <a href="./result">Result</a>
@@ -24,8 +21,23 @@ Optional<String> string =
 <a href="./Bold">KeyBold</a>
 <a href="./Sen1">Sentiments</a>
 
-<H1>DetectLanguage</H1>
-<H3>文章：<%= string.orElse("ERROR") %></H3>
-<H3>結果：<%= message.orElse("ERROR") %></H3>
+<h1>元の文章</h1>
+
+<p>
+	<%
+	String l = message2;
+	for(String dd : message1){
+		l = l.replace(dd,"<strong>" + dd + "</strong>");
+	}%>
+	<%= l%>
+</p>
+
+<h1>Key Phrases一覧</h1>
+<strong><% String[] ss = message1;
+		for(String s: ss){
+	%>
+	<%= s %>
+	<% } %>
+</strong>
 </body>
 </html>

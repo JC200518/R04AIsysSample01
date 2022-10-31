@@ -13,6 +13,14 @@
 %>
 
 <body>
+<a href="./hello">hello</a>
+<a href="./result">Result</a>
+<a href="./languageRequest">LanguageRequest</a>
+<a href="./Key">KeyResult</a>
+<a href="./Key2">KeyResult2</a>
+<a href="./Bold">KeyBold</a>
+<a href="./Sen1">Sentiments</a>
+
 <H1><%= message %></H1>
 </body>
 </html>
