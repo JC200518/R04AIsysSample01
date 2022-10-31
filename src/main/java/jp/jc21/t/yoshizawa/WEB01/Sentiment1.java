@@ -54,9 +54,16 @@ public class Sentiment1 extends HttpServlet {
 		try {
 			Sentiments result = null;
 			result = Sentiment.getSentiments(message);
-			ConfidenceScore message1 = result.documents[0].confidenceScores; 
+			String message0 = result.documents[0].sentiment;
+			double message1 = result.documents[0].confidenceScores.negative*100;
+			double message2 = result.documents[0].confidenceScores.neutral*100;
+			double message3 = result.documents[0].confidenceScores.positive*100;
 			request.setAttribute("aa", message);
+			request.setAttribute("e", message0);
 			request.setAttribute("bb", message1);
+			request.setAttribute("cc", message2);
+			request.setAttribute("dd", message3);
+			
 
 			request
 				.getRequestDispatcher("/WEB-INF/jsp/sentimentA.jsp")

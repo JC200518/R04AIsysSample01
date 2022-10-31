@@ -7,7 +7,15 @@
 <title>テキストの感情を分析するサイト</title>
 </head>
 <%  Object o = request.getAttribute("aa"); 
-    String message1 = (String)o;
+    String message = (String)o;
+    Object p = request.getAttribute("e"); 
+    String message0 = (String)p; 
+    Object q = request.getAttribute("bb"); 
+    double message1 = (double)q; 
+    Object r = request.getAttribute("cc"); 
+    double message2 = (double)r;    
+    Object s = request.getAttribute("dd"); 
+    double message3 = (double)s; 
  %>
 
 <body>
@@ -21,8 +29,12 @@
 
 <h1>分析結果</h1>
 
-<H3>文字列：<%=request.getAttribute("aa") %></H3>
-<H3>結果：<%= request.getAttribute("bb") %></H3>
+<H3>文字列：</H3><p><%=request.getAttribute("aa") %></p>
+<H3>結果：</H3><p><%=request.getAttribute("e") %></p>
+<H3>それぞれの数値</H3>
+<p>negative： <%= request.getAttribute("bb") %>％</p>
+<p>neutral： <%= request.getAttribute("cc") %>％</p>
+<p>positive：<%= request.getAttribute("dd") %>％</p>
 
 </body>
 </html>
